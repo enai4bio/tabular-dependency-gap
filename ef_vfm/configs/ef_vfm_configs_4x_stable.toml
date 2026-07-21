@@ -1,0 +1,38 @@
+# 049 STABLE optimizer for the 168M (dim_t=4096) model. Architecture identical to
+# ef_vfm_configs_4x.toml (dim_t=4096); ONLY the optimizer is changed so the big
+# model actually trains. Root cause diagnosed: reduce_lr_on_plateau collapsed LR
+# to ~1e-7 by epoch 6000 (patience=50, factor=0.9), freezing 2/3 seeds at loss~19.
+# Fix: lr 1e-3 -> 3e-4, scheduler plateau -> anneal (linear decay, no collapse),
+# warmup 100 -> 500. steps/batch/dim_t UNCHANGED. Do NOT use for 1x baselines.
+[data]
+dequant_dist = "none"
+int_dequant_factor = 0
+
+[unimodmlp_params]
+num_layers = 2
+d_token = 4
+n_head = 1
+factor = 32
+bias = true
+dim_t = 4096            # 047: width x4 (was 1024)
+use_mlp = true
+activation = "gelu"
+
+[train.main]
+steps = 8000
+lr = 0.0003            # 049: 1e-3 -> 3e-4
+weight_decay = 0
+ema_decay = 0.997
+batch_size = 4096
+check_val_every = 2000
+lr_scheduler = "anneal"   # 049: plateau(塌LR)-> anneal(线性衰减)
+factor = 0.90           # hyperparam for reduce_lr_on_plateau
+reduce_lr_patience = 50        # hyperparam for reduce_lr_on_plateau
+closs_weight_schedule = "anneal"
+c_lambda = 1.0
+d_lambda = 1.0
+max_grad_norm = 1.0     # gradient clipping (0 to disable)
+warmup_epochs = 500     # 049: 100 -> 500
+
+[sample]
+batch_size = 10000

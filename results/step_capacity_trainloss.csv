@@ -1,0 +1,13 @@
+dataset,capacity,params,seed,final_epoch,final_train_loss,val_loss
+adult,1x,10.6M,0,8000,11.8,NA
+adult,1x,10.6M,1,8000,11.8,NA
+adult,1x,10.6M,2,8000,11.9,NA
+adult,4x,168M,0,8000,11.8,NA
+adult,4x,168M,1,8000,11.7,NA
+adult,4x,168M,2,8000,11.8,NA
+default,1x,10.6M,0,8000,19.2,NA
+default,1x,10.6M,1,8000,19.1,NA
+default,1x,10.6M,2,8000,18.9,NA
+default,4x,168M,0,8000,19.0,NA
+default,4x,168M,1,8000,19.0,NA
+default,4x,168M,2,8000,18.8,NA

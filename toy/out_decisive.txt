@@ -1,0 +1,35 @@
+
+########## DECISIVE GRID (epochs=6000, hi_w=512, hi_steps=500) ##########
+Read converged HIGH-capacity rows only; early/low-cap lag is trivial.
+
+=== XOR: axis (a) CAPACITY  [steps=500, independent argmax] ===
+   width | indep_dep |  conf | joint_bal | jdist
+       8 |     0.999 |  0.73 |     0.968 | [0.268 0.264 0.242 0.226]
+      32 |     0.999 |  0.73 |     0.971 | [0.251 0.26  0.221 0.268]
+     128 |     1.000 |  0.73 |     0.983 | [0.244 0.263 0.238 0.255]
+     512 |     1.000 |  0.73 |     0.953 | [0.256 0.225 0.229 0.29 ]
+
+=== XOR: axis (b) ODE STEPS  [width=512, independent argmax] ===
+   steps | indep_dep |  conf | joint_bal
+       5 |     0.979 |  0.72 |     0.954
+      20 |     1.000 |  0.73 |     0.952
+     100 |     1.000 |  0.73 |     0.945
+     500 |     1.000 |  0.73 |     0.950
+    2000 |     1.000 |  0.73 |     0.947
+  ^ (c) DECODE probe: if indep_dep<<1 but joint_bal~1 & conf low =>
+    joint info present, INDEPENDENT decode destroys it = PROCEDURAL blind spot.
+
+=== CHECKERBOARD: axis (a) CAPACITY  [steps=500] === (true in-cell=1.0, indep~0.5)
+   width | in_cell
+       8 |   0.551
+      32 |   0.552
+     128 |   0.538
+     512 |   0.658
+
+=== CHECKERBOARD: axis (b) ODE STEPS  [width=512] ===
+   steps | in_cell
+       5 |   0.540
+      20 |   0.615
+     100 |   0.647
+     500 |   0.658
+    2000 |   0.662
