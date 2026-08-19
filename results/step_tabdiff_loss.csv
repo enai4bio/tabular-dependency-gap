@@ -1,0 +1,11 @@
+dataset,seed,final_train_loss
+adult,0,1.67
+adult,1,1.63
+adult,2,1.63
+adult,3,1.61
+adult,4,1.65
+default,0,1.62
+default,1,1.65
+default,2,1.63
+default,3,1.65
+default,4,1.65

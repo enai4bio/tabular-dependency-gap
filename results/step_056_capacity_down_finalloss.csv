@@ -1,0 +1,16 @@
+exp,queue,last_epoch,final_loss
+adult_cap0.125x_s0,,,
+adult_cap0.125x_s1,A,8000.0,12.0
+adult_cap0.125x_s2,B,8000.0,12.1
+adult_cap0.125x_s3,C,8000.0,12.0
+adult_cap0.125x_s4,C,8000.0,12.1
+adult_cap0.25x_s0,B,8000.0,12.0
+adult_cap0.25x_s1,B,8000.0,11.9
+adult_cap0.25x_s2,C,8000.0,12.0
+adult_cap0.25x_s3,C,8000.0,12.0
+adult_cap0.25x_s4,C,8000.0,12.0
+adult_cap0.5x_s0,A,8000.0,12.0
+adult_cap0.5x_s1,A,8000.0,11.9
+adult_cap0.5x_s2,A,8000.0,12.0
+adult_cap0.5x_s3,B,8000.0,11.9
+adult_cap0.5x_s4,B,8000.0,11.9
